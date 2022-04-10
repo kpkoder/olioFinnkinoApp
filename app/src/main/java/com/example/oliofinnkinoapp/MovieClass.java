@@ -1,26 +1,32 @@
 package com.example.oliofinnkinoapp;
 
-
+//import java.text.SimpleDateFormat;
+//import java.util.Date;
 
 public class MovieClass {
 
-        private String name = "";
-        private String film = "";
-        private String time = "";
 
-        public MovieClass(String n, String f, String a) {
+
+        private String name = "";
+        private Float rating = 0F;
+        private int length = 0; //length in minutes
+        private String airTime = ""; //when the movie is airing (maybe useless)
+        private boolean favorite = false;
+
+        public MovieClass(String n, Float r, String aT, int a) {
             name = n;
-            film = f;
-            time = a;
+            airTime = aT;
+            rating = r;
+            length = a;
         }
 
         public String getName() {
             return name;
         }
 
-        public String getFilm() { return film; }
+        public Float getFilm() { return rating; }
 
-        public String getTime() { return time; }
+        public int getLength() { return length; }
 
 }
 

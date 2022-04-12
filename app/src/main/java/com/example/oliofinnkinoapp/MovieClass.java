@@ -13,7 +13,7 @@ public class MovieClass {
         private String airTime = ""; //when the movie is airing (maybe useless)
         private boolean favorite = false;
 
-        public MovieClass(String n, Float r, String aT, int a) {
+        public MovieClass(String n, String aT, Float r, int a) {
             name = n;
             airTime = aT;
             rating = r;

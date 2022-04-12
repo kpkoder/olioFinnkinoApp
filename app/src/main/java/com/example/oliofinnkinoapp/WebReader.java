@@ -52,25 +52,21 @@ public class WebReader {
                     String aika = element.getElementsByTagName("dttmShowStart").item(0).getTextContent().substring(11,16);
                     aika = aika + " - " + element.getElementsByTagName("dttmShowEnd").item(0).getTextContent().substring(11,16);
                     String TempLengthInMinutes = element.getElementsByTagName("LengthInMinutes").item(0).getTextContent();
-                    int LengthInMinutes = Integer.valueOf(TempLengthInMinutes);
+                    int LengthInMinutes = Integer.parseInt(TempLengthInMinutes);
 
                     //Might need these
                     //String tempName = element.getElementsByTagName("Theatre").item(0).getTextContent();
 
                     //PRINT FOR CHECK
-                    //System.out.print(tempName);
-                    //System.out.println(" "+tempFilm);
+                    System.out.println(tempName);
 
                     //Making new Movies
                     //MovieClass(String name, Float rating, String airTime, int LengthInMinutes) {
-                    MovieClass kino = new MovieClass(tempName, 0F, aika, LengthInMinutes);
+                    MovieClass kino = new MovieClass(tempName, aika, 0F, LengthInMinutes);
                     Movies.add(kino);
+                    //System.out.println(kino.getName());
 
                 }
-
-                //FILESAVER TEST
-                FileSaver fileSaver = FileSaver.getInstance();
-                fileSaver.Write(Movies);
 
             }
 
@@ -82,7 +78,7 @@ public class WebReader {
             e.printStackTrace();
         } finally {
             //PRINT FOR CHECK
-            //System.out.println("");
+            System.out.print("");
         }
 
     }

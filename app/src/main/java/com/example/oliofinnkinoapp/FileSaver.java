@@ -5,6 +5,12 @@ import java.util.List;
 
 //Sorts the ArrayList of different movies
 //Can save and or fetch saved data
+
+/*FILESAVER TEST
+       FileSaver fileSaver = FileSaver.getInstance();
+       fileSaver.Write(Movies);
+       */
+
 public class FileSaver {
 
     private List<MovieClass> movieList;

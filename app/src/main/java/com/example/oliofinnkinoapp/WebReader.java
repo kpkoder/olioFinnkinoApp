@@ -16,14 +16,14 @@ import javax.xml.parsers.ParserConfigurationException;
 public class WebReader {
 
     //Arraylist for movies
-    ArrayList<MovieClass> Kinos = new ArrayList();
+    ArrayList<MovieClass> Movies = new ArrayList();
 
     //singleton principle
     private static WebReader webReader = new WebReader();
     public static WebReader getInstance() { return webReader; }
 
 
-    // Method for reading Finnkino movie data
+    // Method for reading Finnkino movie data and creating MovieClass objects
     // !TODO
     public void readXML() {
 
@@ -64,12 +64,13 @@ public class WebReader {
                     //Making new Movies
                     //MovieClass(String name, Float rating, String airTime, int LengthInMinutes) {
                     MovieClass kino = new MovieClass(tempName, 0F, aika, LengthInMinutes);
-                    Kinos.add(kino);
-                    /*
-                    if (tempName.contains(":")) {
-                    }*/
+                    Movies.add(kino);
 
                 }
+
+                //FILESAVER TEST
+                FileSaver fileSaver = FileSaver.getInstance();
+                fileSaver.Write(Movies);
 
             }
 

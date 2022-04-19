@@ -23,6 +23,11 @@ public class WebReader {
     public static WebReader getInstance() { return webReader; }
 
 
+    public ArrayList<MovieClass> returnMovies() {
+        return Movies;
+    }
+
+
     // Method for reading Finnkino movie data and creating MovieClass objects
     // !TODO
     public void readXML() {

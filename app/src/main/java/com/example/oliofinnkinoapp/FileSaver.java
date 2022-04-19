@@ -1,6 +1,10 @@
 package com.example.oliofinnkinoapp;
 
 
+import android.content.Context;
+
+import java.io.IOException;
+import java.io.OutputStreamWriter;
 import java.util.List;
 
 //Sorts the ArrayList of different movies
@@ -13,6 +17,8 @@ import java.util.List;
 
 public class FileSaver {
 
+
+    private Context context;
     private List<MovieClass> movieList;
 
     //singleton principle
@@ -23,9 +29,22 @@ public class FileSaver {
     public void Write(List<MovieClass> movieList) {
         this.movieList = movieList;
 
-        for (MovieClass i : movieList) {
-            System.out.println(i.getName());
+        OutputStreamWriter writer = null; //responsible for writing files
+        try {
+            writer = new OutputStreamWriter(context.openFileOutput("movies.txt", Context.MODE_PRIVATE));
+
+            for (MovieClass i : movieList) {
+                String tempString = String.valueOf(i); //convert to string
+                writer.write(tempString);
+                System.out.println(i);
+                }
+
+            writer.close();
+            } catch (IOException e) {
+            e.printStackTrace();
         }
+
+
     }
 
 

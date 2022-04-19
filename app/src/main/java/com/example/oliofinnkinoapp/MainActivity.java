@@ -6,12 +6,15 @@ import android.content.Context;
 import android.os.Bundle;
 import android.os.StrictMode;
 
+import java.util.List;
+
 //Group: gamers
 //Finnkino Movie App
 
 public class MainActivity extends AppCompatActivity {
 
     private Context context;
+    private List<MovieClass> movieList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,7 +26,13 @@ public class MainActivity extends AppCompatActivity {
 
         //TEST
         WebReader webReader = WebReader.getInstance();
+        FileSaver fileSaver = FileSaver.getInstance();
+
         webReader.readXML();
+        movieList = webReader.returnMovies();
+        fileSaver.Write(movieList);
+
+
 
     }
 }

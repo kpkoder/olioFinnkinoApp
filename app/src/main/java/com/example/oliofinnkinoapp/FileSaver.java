@@ -31,7 +31,6 @@ public class FileSaver {
     public void Write() {
         //Getting movielist from WebReader
         WebReader webReader = WebReader.getInstance();
-        this.movieList = webReader.returnMovies();
 
         /* didnt work
         OutputStreamWriter writer = null; //responsible for writing files
@@ -42,10 +41,14 @@ public class FileSaver {
         try {
             fos = new FileOutputStream(file);
 
+            //getting the list
+            this.movieList = webReader.returnMovies();
+
+
             for (MovieClass i : movieList) {
-                String tempString = i.getName(); //convert to string
-                fos.write(tempString.getBytes()); //write movies
+                String tempString = i.getName(); //get movie name
                 System.out.println(tempString);
+                fos.write(tempString.getBytes()); //write movies
             }
             //Toast.makeText(this, "Saved", Toast.LENGTH_LONG).show();
             } catch (FileNotFoundException e) {

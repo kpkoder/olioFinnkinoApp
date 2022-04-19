@@ -16,7 +16,7 @@ import javax.xml.parsers.ParserConfigurationException;
 public class WebReader {
 
     //Arraylist for movies
-    ArrayList<MovieClass> Movies = new ArrayList();
+    public ArrayList<MovieClass> Movies = new ArrayList();
 
     //singleton principle
     private static WebReader webReader = new WebReader();
@@ -63,7 +63,7 @@ public class WebReader {
                     //String tempName = element.getElementsByTagName("Theatre").item(0).getTextContent();
 
                     //PRINT FOR CHECK
-                    System.out.println(tempName);
+                    //System.out.println(tempName);
 
                     //Making new Movies
                     //MovieClass(String name, Float rating, String airTime, int LengthInMinutes) {

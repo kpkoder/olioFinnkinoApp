@@ -28,9 +28,17 @@ public class MainActivity extends AppCompatActivity {
         WebReader webReader = WebReader.getInstance();
         FileSaver fileSaver = FileSaver.getInstance();
 
+
+
         webReader.readXML();
         movieList = webReader.returnMovies();
-        fileSaver.Write(movieList);
+        /*
+        for (MovieClass i : movieList) {
+            String tempString = i.getName();
+            System.out.println(tempString);
+        } */
+        //must be ran after readXML
+        fileSaver.Write();
 
 
 

@@ -5,8 +5,6 @@ package com.example.oliofinnkinoapp;
 
 public class MovieClass {
 
-
-
         private String name = "";
         private Float rating = 0F;
         private int length = 0; //length in minutes

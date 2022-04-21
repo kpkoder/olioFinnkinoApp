@@ -16,6 +16,7 @@ public class MovieClass {
             airTime = aT;
             rating = r;
             length = a;
+
         }
 
         public String getName() {

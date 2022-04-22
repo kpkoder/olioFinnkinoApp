@@ -2,10 +2,8 @@ package com.example.oliofinnkinoapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
-
 import android.os.Bundle;
 import android.os.StrictMode;
-
 import java.util.List;
 
 //Group: gamers
@@ -28,11 +26,9 @@ public class MainActivity extends AppCompatActivity {
         WebReader webReader = WebReader.getInstance();
         FileSaver fileSaver = FileSaver.getInstance();
 
-
-
         webReader.readXML();
-        movieList = webReader.returnMovies();
-        fileSaver.Write();
+        fileSaver.Write(context);
+        fileSaver.readMovies(context);
 
 
 

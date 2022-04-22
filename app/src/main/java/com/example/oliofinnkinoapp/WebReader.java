@@ -29,7 +29,6 @@ public class WebReader {
 
 
     // Method for reading Finnkino movie data and creating MovieClass objects
-    // !TODO
     public void readXML() {
 
         try {
@@ -45,7 +44,7 @@ public class WebReader {
                 /*For skipping unnecessary nodes at start (if needed)
                 if (i == 0 || i == 1) {
                     continue;
-                }*/
+                } */
 
                 Node node = nList.item(i);
                 if (node.getNodeType() == Node.ELEMENT_NODE) {
@@ -87,5 +86,6 @@ public class WebReader {
         }
 
     }
+
 
 }

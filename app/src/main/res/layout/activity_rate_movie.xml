@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".RateMovieActivity"
+    android:background="#F3F2EB"
+    android:padding="20dp"
+    >
+
+    <TextView
+        android:id="@+id/rateText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Rate a Movie"
+        android:textSize="40dp"
+        android:textStyle="bold"
+        android:layout_centerHorizontal="true"
+        />
+
+    <TextView
+        android:id="@+id/movieName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Movie name"
+        android:textSize="30dp"
+        android:layout_below="@+id/rateText"
+        android:layout_marginTop="20dp"
+        />
+
+
+    <RatingBar
+        android:id="@+id/ratingBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:isIndicator="false"
+        android:numStars="5"
+        android:progressTint="#B6CA9E"
+        android:rating="0"
+        android:stepSize="1"
+        android:layout_below="@id/movieName"
+        android:layout_marginTop="20dp"
+        />
+
+    <TextView
+        android:id="@+id/rateCount"
+        android:layout_below="@+id/ratingBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:textAppearanceMedium"
+        />
+
+    <EditText
+        android:id="@+id/review"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rateCount"
+        android:hint="Write a review..."
+        android:textAppearance="?android:textAppearanceMedium"
+        />
+
+    <Button
+        android:id="@+id/saveButton"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:textSize="20dp"
+        android:text="Save"
+        android:layout_below="@+id/showRating"
+        android:layout_marginTop="20dp"
+        android:backgroundTint="#A9BC93"
+        />
+
+    <TextView
+        android:id="@+id/showRating"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/review"
+        android:textAppearance="?android:textAppearanceMedium"
+        />
+
+
+</RelativeLayout>

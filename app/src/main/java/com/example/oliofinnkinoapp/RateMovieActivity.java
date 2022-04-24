@@ -1,0 +1,62 @@
+package com.example.oliofinnkinoapp;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.RatingBar;
+import android.widget.TextView;
+
+public class RateMovieActivity extends AppCompatActivity {
+
+    TextView rateCount, showRating;
+    EditText review;
+    Button button;
+    RatingBar ratingBar;
+    float rateValue; String temp;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_rate_movie);
+
+        rateCount = findViewById(R.id.rateCount);
+        ratingBar = findViewById(R.id.ratingBar);
+        review = findViewById(R.id.review);
+        button = findViewById(R.id.saveButton);
+        showRating = findViewById(R.id.showRating);
+
+        ratingBar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
+            @Override
+            public void onRatingChanged(RatingBar ratingBar, float v, boolean b) {
+
+                rateValue = ratingBar.getRating();
+
+                if (rateValue == 1)
+                    rateCount.setText("You give 1 star!");
+                else if (rateValue == 2)
+                    rateCount.setText("You give 2 stars!");
+                else if (rateValue == 3)
+                    rateCount.setText("You give 3 stars!");
+                else if (rateValue == 4)
+                    rateCount.setText("You give 4 stars!");
+                else if (rateValue == 5)
+                    rateCount.setText("You give 5 stars!");
+
+            }
+        });
+
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                temp = rateCount.getText().toString();
+                showRating.setText("Your rating: \n"+temp+ "\n"+review.getText());
+                review.setText("");
+                ratingBar.setRating(0);
+                rateCount.setText("");
+            }
+        });
+    }
+}

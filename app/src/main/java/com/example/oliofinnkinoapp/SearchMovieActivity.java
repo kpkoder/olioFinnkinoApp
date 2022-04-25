@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -23,6 +24,7 @@ public class SearchMovieActivity extends AppCompatActivity {
     String[] AllMovies = {"movie1", "movie2", "movie3"};
 
     List<String> listOfMovies = Arrays.asList(AllMovies);
+    List<String> tempList = new ArrayList<String>();
 
     ArrayAdapter<String> arrayAdapter;
 
@@ -31,16 +33,13 @@ public class SearchMovieActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_movie);
 
-
         //movies for adapter
         FileSaver fileSaver = FileSaver.getInstance();
-        List<String> tempList = fileSaver.returnMovieSorted();  //fetching sorted list
-        String[] adapMovieList = tempList.stream().toArray(String[]::new); //converting for adapter
-
+        this.tempList = fileSaver.returnMovieSorted();
+        String[] adapMovieList = tempList.stream().toArray(String[]::new);
 
         listView = findViewById(R.id.listview);
         arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, adapMovieList);
-
         listView.setAdapter(arrayAdapter);
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -82,7 +81,7 @@ public class SearchMovieActivity extends AppCompatActivity {
         System.out.println(position);
         Intent intent = new Intent(this, RateMovieActivity.class);
 
-        String thisMovie = listOfMovies.get(position);
+        String thisMovie = tempList.get(position);
         intent.putExtra(EXTRA_TEXT, thisMovie);
         startActivity(intent);
 

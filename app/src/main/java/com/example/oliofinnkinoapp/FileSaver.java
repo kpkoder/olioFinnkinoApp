@@ -10,7 +10,10 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
+import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 //Sorts the ArrayList of different movies
 //Can save and or fetch saved data
@@ -18,22 +21,31 @@ import java.util.List;
 public class FileSaver {
 
     private List<MovieClass> movieList;
+    private List<String> movieListSorted;
     //private Context context;
 
     //singleton principle
     private static FileSaver fileSaver = new FileSaver();
     public static FileSaver getInstance() { return fileSaver; }
 
+    //returning sorted list
+    public List<String> returnMovieSorted() {
+        return movieListSorted;
+    }
 
     public void readMovies(Context context) {
         InputStream reader = null;
+        List<String> movieNames = new ArrayList<String>(); //new list for sorting
+        this.movieListSorted = movieListSorted;
+
         try {
             reader = context.openFileInput("FKmovies.txt");
             BufferedReader br = new BufferedReader(new InputStreamReader(reader));
             String line = "";
 
             while ((line=br.readLine()) != null) {
-                System.out.println(line);
+                movieNames.add(line); //adding movie to new list
+                //System.out.println(line);
             }
             reader.close();
 
@@ -42,6 +54,10 @@ public class FileSaver {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        // sorting, removing dublicates
+        movieListSorted = movieNames.stream().sorted().collect(Collectors.toList());
+        movieListSorted = movieListSorted.stream().distinct().collect(Collectors.toList());
+
 
 
     }
@@ -59,9 +75,9 @@ public class FileSaver {
                     "FKmovies.txt", Context.MODE_PRIVATE));
             for (MovieClass i : movieList) {
                 String tempString = i.getName(); //get movie name
-                String tempTime = i.getAirTime();
+                //String tempTime = i.getAirTime(); //maybe unnecessary data
                 //System.out.println(tempString);
-                writer.write(tempString + ";" + tempTime + "\n");
+                writer.write(tempString + "\n");
 
             }
                 writer.close();

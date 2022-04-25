@@ -2,6 +2,7 @@ package com.example.oliofinnkinoapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -21,6 +22,12 @@ public class RateMovieActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rate_movie);
+
+        Intent intent = getIntent();
+        String text1 = intent.getStringExtra(SearchMovieActivity.EXTRA_TEXT);
+
+        TextView textView = findViewById(R.id.movieName);
+        textView.setText(text1);
 
         rateCount = findViewById(R.id.rateCount);
         ratingBar = findViewById(R.id.ratingBar);

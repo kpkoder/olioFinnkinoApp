@@ -12,10 +12,17 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import java.util.Arrays;
+import java.util.List;
+
 public class SearchMovieActivity extends AppCompatActivity {
 
+    public static final String EXTRA_TEXT = "com.example.oliofinnkinoapp.EXTRA_TEXT";
+
     ListView listView;
-    String[] listOfMovies = {"movie1", "movie2", "movie3"};
+    String[] AllMovies = {"movie1", "movie2", "movie3"};
+
+    List<String> listOfMovies = Arrays.asList(AllMovies);
 
     ArrayAdapter<String> arrayAdapter;
 
@@ -31,15 +38,7 @@ public class SearchMovieActivity extends AppCompatActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                if(i == 0) {
-
-                    startActivity(new Intent(SearchMovieActivity.this,RateMovieActivity.class));
-
-                }else if (i == 1) {
-
-                }else{
-
-                }
+                whatMovie(i);
             }
 
         });
@@ -69,6 +68,16 @@ public class SearchMovieActivity extends AppCompatActivity {
         });
 
         return super.onCreateOptionsMenu(menu);
+    }
+
+    public void whatMovie (int position) {
+        System.out.println(position);
+        Intent intent = new Intent(this, RateMovieActivity.class);
+
+        String thisMovie = listOfMovies.get(position);
+        intent.putExtra(EXTRA_TEXT, thisMovie);
+        startActivity(intent);
+
     }
 
 }

@@ -2,13 +2,11 @@ package com.example.oliofinnkinoapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.view.View;
 import android.widget.Button;
-
 import java.util.List;
 
 //Group: gamers
@@ -33,8 +31,8 @@ public class MainActivity extends AppCompatActivity {
         FileSaver fileSaver = FileSaver.getInstance();
 
         webReader.readXML();
-        movieList = webReader.returnMovies();
-        fileSaver.Write();
+        fileSaver.Write(context);
+        fileSaver.readMovies(context);
 
         button = findViewById(R.id.startButton);
 

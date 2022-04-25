@@ -23,9 +23,11 @@ public class MovieClass {
             return name;
         }
 
-        public Float getFilm() { return rating; }
+        public Float getRating() { return rating; }
 
         public int getLength() { return length; }
+
+        public String getAirTime() { return airTime; }
 
 }
 

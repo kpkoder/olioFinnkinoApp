@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
         FileSaver fileSaver = FileSaver.getInstance();
 
         webReader.readXML();
-        //fileSaver.Write(context);      //makes a file of the movies on your device
+        fileSaver.Write(context);      //makes a file of the movies on your device
         fileSaver.readMovies(context); //for reading said file ^
         //END OF TEST
 

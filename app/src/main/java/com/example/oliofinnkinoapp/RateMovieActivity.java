@@ -18,6 +18,11 @@ public class RateMovieActivity extends AppCompatActivity {
     RatingBar ratingBar;
     float rateValue; String temp;
 
+    /*singleton principle if needed
+    private static RateMovieActivity rateMovieActivity = new RateMovieActivity();
+    public static RateMovieActivity getInstance() { return rateMovieActivity; }
+     */
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,14 +61,21 @@ public class RateMovieActivity extends AppCompatActivity {
         });
 
         button.setOnClickListener(new View.OnClickListener() {
+
+            FileSaver fileSaver = FileSaver.getInstance();
             @Override
             public void onClick(View view) {
                 temp = rateCount.getText().toString();
                 showRating.setText("Your rating: \n"+temp+ "\n"+review.getText());
+                String tempMName = textView.getText().toString();
+                //WRITING REVIEW WHEN PRESSING SAVE
+                fileSaver.writeReview(rateValue,tempMName, review.getText().toString(),RateMovieActivity.this);
+                // reset everything
                 review.setText("");
                 ratingBar.setRating(0);
                 rateCount.setText("");
             }
         });
     }
+
 }

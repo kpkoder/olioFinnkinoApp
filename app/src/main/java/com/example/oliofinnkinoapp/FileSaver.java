@@ -6,6 +6,7 @@ package com.example.oliofinnkinoapp;
 import android.content.Context;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -33,7 +34,24 @@ public class FileSaver {
         return movieListSorted;
     }
 
-    public void readMovies(Context context) {
+    public void writeReview(Float rating, String mName, String reviewText, Context context) {
+        //test print
+        //System.out.println(reviewText + " "+rating.toString());
+        try {
+            OutputStreamWriter writer = new OutputStreamWriter(context.openFileOutput(
+                    "Review"+mName+".txt", Context.MODE_PRIVATE)); //mode_private
+            writer.write(mName + "\n"+"Arvosana: "+rating.toString()+"\n\n"); //first lines
+            writer.write(reviewText);
+            writer.close();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    public void readAndWriteMovies(Context context) {
         InputStream reader = null;
         List<String> movieNames = new ArrayList<String>(); //new list for sorting
         this.movieListSorted = movieListSorted;
@@ -58,11 +76,20 @@ public class FileSaver {
         movieListSorted = movieNames.stream().sorted().collect(Collectors.toList());
         movieListSorted = movieListSorted.stream().distinct().collect(Collectors.toList());
 
-
-
+        //RE-WRITING FKmovies.txt with fixed list
+        try {
+            OutputStreamWriter writer = new OutputStreamWriter(context.openFileOutput(
+                    "FKmovies.txt", Context.MODE_PRIVATE)); //mode_private
+            for (String i : movieListSorted) {
+                writer.write(i + "\n");
+            }
+            writer.close();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
-
-
 
     public void Write(Context context) {
 
@@ -72,12 +99,12 @@ public class FileSaver {
         this.movieList = webReader.returnMovies();
         try {
             OutputStreamWriter writer = new OutputStreamWriter(context.openFileOutput(
-                    "FKmovies.txt", Context.MODE_PRIVATE));
+                    "FKmovies.txt", Context.MODE_APPEND)); //mode_append
             for (MovieClass i : movieList) {
                 String tempString = i.getName(); //get movie name
                 //String tempTime = i.getAirTime(); //maybe unnecessary data
                 //System.out.println(tempString);
-                writer.write(tempString + "\n");
+                writer.append(tempString + "\n");
 
             }
                 writer.close();
@@ -86,65 +113,7 @@ public class FileSaver {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        /*
-        try {
-            FileOutputStream writer = new FileOutputStream(new File(path, "FKmovies.txt"), true);
-            writer.write(tempTest.getBytes());
-            writer.close();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        */
-        /* DONT CARE ABOUT THIS SHITE, none of these worked
-        OutputStreamWriter writer = null; //responsible for writing files
-        writer = new OutputStreamWriter(context.openFileOutput("movies.txt", Context.MODE_PRIVATE));
 
-        //File file = new File(Environment.getExternalStorageDirectory().getAbsolutePath(), "movies.txt");
-        //FileOutputStream fos = null;
-        //THIS WORKS FOR SOME REASON
-        this.movieList = webReader.returnMovies();
-        for (MovieClass i : movieList) {
-            String tempString = i.getName(); //get movie name
-            System.out.println(tempString);
-        }*/
-
-            /*
-                try (Writer writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream("FKmovies.txt"), "utf-8"))) {
-                    for (MovieClass i : movieList) {
-                        String tempString = i.getName(); //get movie name
-                        System.out.println(tempString);
-                        writer.write(tempString);        //writing movie data
-                    }
-                } catch (FileNotFoundException e) {
-                    e.printStackTrace();
-                } catch (UnsupportedEncodingException e) {
-                    e.printStackTrace();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-                */
-                /*
-                try {
-                    fos.write(tempString.getBytes()); //write
-                    //Toast.makeText(this, "Saved", Toast.LENGTH_LONG).show();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                } finally {
-                    if (fos != null) {
-                        try {
-                            fos.close();
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }
-                    }
-                }
-            }
-            //after try catch
-             */
     }
-
-
 
 }

@@ -28,14 +28,15 @@ public class MainActivity extends AppCompatActivity {
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
 
-        //TEST
+        //Instances
         WebReader webReader = WebReader.getInstance();
         FileSaver fileSaver = FileSaver.getInstance();
 
-        webReader.readXML();
+        //MUST BE RAN AT START
+        webReader.readXML();            //reads movies from https://www.finnkino.fi/xml
         fileSaver.Write(context);      //makes a file of the movies on your device
-        fileSaver.readMovies(context); //for reading said file ^
-        //END OF TEST
+        fileSaver.readAndWriteMovies(context); //for reading and re-writing said file ^
+        //END
 
         button = findViewById(R.id.startButton);
 
@@ -48,12 +49,14 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+
     public void searchMovies() {
 
         Intent intent = new Intent(this, SearchMovieActivity.class);
         startActivity(intent);
 
     }
+
 
 
 }

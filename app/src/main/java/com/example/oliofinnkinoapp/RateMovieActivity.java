@@ -78,7 +78,7 @@ public class RateMovieActivity extends AppCompatActivity {
                 String tempMName = textView.getText().toString();
                 //WRITING REVIEW WHEN PRESSING SAVE
                 String yourName = yourNameText.getText().toString();
-                fileSaver.writeReview(yourName,rateValue,tempMName, review.getText().toString(),RateMovieActivity.this);
+                fileSaver.writeReview(fileSaver.getMovieLength(text1),yourName,rateValue,tempMName, review.getText().toString(),RateMovieActivity.this);
                 //reset
                 review.setText("");
                 ratingBar.setRating(0);

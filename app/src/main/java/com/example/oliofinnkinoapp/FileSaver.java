@@ -93,14 +93,17 @@ public class FileSaver {
         }*/
     }
 
-    public void writeReview(String yourName, Float rating, String mName, String reviewText, Context context) {
+    public void writeReview(String lengthText,String yourName, Float rating, String mName, String reviewText, Context context) {
         //test print
         //System.out.println(reviewText + " "+rating.toString());
         try {
             OutputStreamWriter writer = new OutputStreamWriter(context.openFileOutput(
                     "REVIEW_"+mName+".txt", Context.MODE_PRIVATE)); //mode_private
+            int rating2 = Math.round(rating);
             writer.write(reviewText);
-            writer.write( "\n\n"+"Your rating: "+rating.toString()+"\n"+yourName); //last lines
+            writer.write("\n\nLength: "+lengthText+" minutes\n");
+            writer.write(String.format("Your rating: %d/5\n", rating2));
+            writer.write(yourName);
             writer.close();
         } catch (FileNotFoundException e) {
             e.printStackTrace();

@@ -14,8 +14,14 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.OlioFinnkinoApp">
         <activity
+            android:name=".RatingDetails"
+            android:exported="false" />
+        <activity
+            android:name=".SavedMoviesList"
+            android:exported="false" />
+        <activity
             android:name=".RateMovieActivity"
-            android:exported="false"/>
+            android:exported="false" />
         <activity
             android:name=".SearchMovieActivity"
             android:exported="false" />

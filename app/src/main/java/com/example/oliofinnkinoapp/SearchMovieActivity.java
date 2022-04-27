@@ -21,9 +21,9 @@ public class SearchMovieActivity extends AppCompatActivity {
     public static final String EXTRA_TEXT = "com.example.oliofinnkinoapp.EXTRA_TEXT";
 
     ListView listView;
-    String[] AllMovies = {"movie1", "movie2", "movie3"};
+    /*String[] AllMovies = {"movie1", "movie2", "movie3"};
 
-    List<String> listOfMovies = Arrays.asList(AllMovies);
+    List<String> listOfMovies = Arrays.asList(AllMovies);*/
     List<String> tempList = new ArrayList<String>();
 
     ArrayAdapter<String> arrayAdapter;

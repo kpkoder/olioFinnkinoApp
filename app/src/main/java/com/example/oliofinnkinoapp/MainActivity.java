@@ -18,7 +18,7 @@ public class MainActivity extends AppCompatActivity {
 
     private Context context;
     private List<MovieClass> movieList;
-    Button button;
+    Button searchButton, myMoviesButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,12 +38,20 @@ public class MainActivity extends AppCompatActivity {
         fileSaver.readAndWriteMovies(context); //for reading and re-writing said file ^
         //END
 
-        button = findViewById(R.id.startButton);
+        searchButton = findViewById(R.id.searchButton);
+        myMoviesButton = findViewById(R.id.myMoviesButton);
 
-        button.setOnClickListener(new View.OnClickListener() {
+        searchButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 searchMovies();
+            }
+        });
+
+        myMoviesButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showSavedMovies();
             }
         });
 
@@ -54,9 +62,12 @@ public class MainActivity extends AppCompatActivity {
 
         Intent intent = new Intent(this, SearchMovieActivity.class);
         startActivity(intent);
-
     }
 
+    public void showSavedMovies() {
 
+        Intent intent = new Intent(this, SavedMoviesList.class);
+        startActivity(intent);
+    }
 
 }

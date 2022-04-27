@@ -5,14 +5,14 @@ package com.example.oliofinnkinoapp;
 
 import android.content.Context;
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
+import java.io.FilenameFilter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -23,7 +23,7 @@ public class FileSaver {
 
     private List<MovieClass> movieList;
     private List<String> movieListSorted;
-    //private Context context;
+    private List<String> movieListSaved = new ArrayList<String>();
 
     //singleton principle
     private static FileSaver fileSaver = new FileSaver();
@@ -34,13 +34,37 @@ public class FileSaver {
         return movieListSorted;
     }
 
+    //returning saved/reviewed movies
+    public List<String> returnMovieSaved() {
+        return movieListSaved;
+    }
+
+    public void searchReviews(Context context) {
+        movieListSaved = this.movieListSaved;
+        movieListSaved.clear(); //null after each iteration
+        File folder = new File(context.getFilesDir().getPath());
+        File[] listOfFiles = folder.listFiles();
+        for (File file : listOfFiles) {
+            if (file.isFile()) {
+                if (file.toString().contains("REVIEW")) {
+                    //System.out.println(file.getName());
+                    String tempMovieName = file.getName();
+                    movieListSaved.add(tempMovieName);
+                }
+            }
+        }
+        /*for (String a : movieListSaved) {
+            System.out.println(a);
+        }*/
+    }
+
     public void writeReview(Float rating, String mName, String reviewText, Context context) {
         //test print
         //System.out.println(reviewText + " "+rating.toString());
         try {
             OutputStreamWriter writer = new OutputStreamWriter(context.openFileOutput(
-                    "Review"+mName+".txt", Context.MODE_PRIVATE)); //mode_private
-            writer.write(mName + "\n"+"Arvosana: "+rating.toString()+"\n\n"); //first lines
+                    "REVIEW-"+mName+".txt", Context.MODE_PRIVATE)); //mode_private
+            writer.write(mName + "\n"+"Your rating: "+rating.toString()+"\n\n"); //first lines
             writer.write(reviewText);
             writer.close();
         } catch (FileNotFoundException e) {
@@ -102,9 +126,8 @@ public class FileSaver {
                     "FKmovies.txt", Context.MODE_APPEND)); //mode_append
             for (MovieClass i : movieList) {
                 String tempString = i.getName(); //get movie name
-                //String tempTime = i.getAirTime(); //maybe unnecessary data
-                //System.out.println(tempString);
-                writer.append(tempString + "\n");
+                String tempTime = String.valueOf(i.getLength()); //get movie length in minutes
+                writer.append(tempString + ";"+tempTime+"\n");
 
             }
                 writer.close();

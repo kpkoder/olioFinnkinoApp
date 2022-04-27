@@ -12,7 +12,7 @@ import android.widget.TextView;
 
 public class RateMovieActivity extends AppCompatActivity {
 
-    TextView rateCount, showRating;
+    TextView rateCount, showRating, lengthBar;
     EditText review;
     Button button;
     RatingBar ratingBar;
@@ -39,6 +39,7 @@ public class RateMovieActivity extends AppCompatActivity {
         review = findViewById(R.id.review);
         button = findViewById(R.id.saveButton);
         showRating = findViewById(R.id.showRating);
+        lengthBar = findViewById(R.id.movieLength);
 
         ratingBar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
             @Override
@@ -70,7 +71,7 @@ public class RateMovieActivity extends AppCompatActivity {
                 String tempMName = textView.getText().toString();
                 //WRITING REVIEW WHEN PRESSING SAVE
                 fileSaver.writeReview(rateValue,tempMName, review.getText().toString(),RateMovieActivity.this);
-                // reset everything
+                //reset
                 review.setText("");
                 ratingBar.setRating(0);
                 rateCount.setText("");

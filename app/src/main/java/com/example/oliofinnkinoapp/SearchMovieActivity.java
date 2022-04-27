@@ -36,6 +36,13 @@ public class SearchMovieActivity extends AppCompatActivity {
         //movies for adapter
         FileSaver fileSaver = FileSaver.getInstance();
         this.tempList = fileSaver.returnMovieSorted();
+        //REMOVING ;LENGTH FOR ADAPTER
+        for (String i : tempList) {
+            String[] s = i.split(";");
+            String s1 = s[0];
+            //System.out.println(s1);
+            tempList.set(tempList.indexOf(i),s1);
+        }
         String[] adapMovieList = tempList.stream().toArray(String[]::new);
 
         listView = findViewById(R.id.listview);
@@ -78,7 +85,7 @@ public class SearchMovieActivity extends AppCompatActivity {
     }
 
     public void whatMovie (int position) {
-        System.out.println(position);
+        //System.out.println(position);
         Intent intent = new Intent(this, RateMovieActivity.class);
 
         String thisMovie = tempList.get(position);

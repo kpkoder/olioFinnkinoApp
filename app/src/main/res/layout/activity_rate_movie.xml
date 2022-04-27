@@ -13,34 +13,41 @@
         android:id="@+id/rateText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
         android:text="Rate a Movie"
         android:textSize="40dp"
-        android:textStyle="bold"
-        android:layout_centerHorizontal="true"
-        />
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/movieName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="30dp"
         android:layout_below="@+id/rateText"
         android:layout_marginTop="20dp"
-        />
+        android:textSize="30dp" />
 
+
+    <TextView
+        android:id="@+id/movieLength"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rateText"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="322dp"
+        android:layout_marginTop="10dp"
+        android:textSize="30dp" />
 
     <RatingBar
         android:id="@+id/ratingBar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@id/movieName"
+        android:layout_marginTop="20dp"
         android:isIndicator="false"
         android:numStars="5"
         android:progressTint="#B6CA9E"
         android:rating="0"
-        android:stepSize="1"
-        android:layout_below="@id/movieName"
-        android:layout_marginTop="20dp"
-        />
+        android:stepSize="1" />
 
     <TextView
         android:id="@+id/rateCount"

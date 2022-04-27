@@ -38,6 +38,10 @@ public class MainActivity extends AppCompatActivity {
         fileSaver.readAndWriteMovies(context); //for reading and re-writing said file ^
         //END
 
+        //TEST AREA
+        //fileSaver.searchReviews(context);
+        //
+
         searchButton = findViewById(R.id.searchButton);
         myMoviesButton = findViewById(R.id.myMoviesButton);
 

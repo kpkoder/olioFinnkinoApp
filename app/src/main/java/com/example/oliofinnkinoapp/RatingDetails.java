@@ -6,6 +6,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class RatingDetails extends AppCompatActivity {
 
     TextView movieName, ratingText;

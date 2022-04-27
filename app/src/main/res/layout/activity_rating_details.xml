@@ -27,4 +27,15 @@
         android:layout_below="@+id/movieName"
         />
 
+    <Button
+        android:id="@+id/delButton"
+        android:layout_width="119dp"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/movieName"
+        android:layout_marginEnd="-353dp"
+        android:layout_marginBottom="-512dp"
+        android:layout_toStartOf="@+id/movieName"
+        android:onClick="setDelButton"
+        android:text="delete" />
+
 </RelativeLayout>

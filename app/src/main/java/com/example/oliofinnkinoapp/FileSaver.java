@@ -39,6 +39,12 @@ public class FileSaver {
         return movieListSaved;
     }
 
+    public void fileDeleter(String name, Context context) {
+        File dir = context.getFilesDir();
+        File file = new File(dir, name);
+        file.delete();
+    }
+
     public String reviewReader(String fileName, Context context) {
 
         String revText = "";

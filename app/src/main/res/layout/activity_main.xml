@@ -25,12 +25,12 @@
         android:id="@+id/myMoviesButton"
         android:layout_width="200dp"
         android:layout_height="60dp"
+        android:layout_below="@+id/searchButton"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:backgroundTint="#A9BC93"
         android:text="My movies"
         android:textSize="20dp"
-        android:layout_below="@+id/searchButton"
-        android:layout_marginTop="30dp"
-        android:layout_centerHorizontal="true"
-        android:backgroundTint="#A9BC93"
 
         />
 

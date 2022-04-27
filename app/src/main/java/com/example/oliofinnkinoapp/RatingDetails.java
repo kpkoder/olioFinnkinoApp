@@ -8,6 +8,8 @@ import android.widget.TextView;
 
 public class RatingDetails extends AppCompatActivity {
 
+    TextView movieName, ratingText;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -16,7 +18,9 @@ public class RatingDetails extends AppCompatActivity {
         Intent intent = getIntent();
         String text1 = intent.getStringExtra(SavedMoviesList.EXTRA_TEXT);
 
-        TextView textView = findViewById(R.id.movieName);
-        textView.setText(text1);
+        movieName = findViewById(R.id.movieName);
+        ratingText = findViewById(R.id.ratingText);
+
+        movieName.setText(text1);
     }
 }

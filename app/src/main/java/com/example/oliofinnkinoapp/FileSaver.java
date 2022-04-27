@@ -39,6 +39,41 @@ public class FileSaver {
         return movieListSaved;
     }
 
+    public String reviewReader(String fileName, Context context) {
+
+        String revText = "";
+        InputStream reader = null;
+        try {
+            reader = context.openFileInput(fileName);
+            BufferedReader br = new BufferedReader(new InputStreamReader(reader));
+            String line = "";
+
+            while ((line=br.readLine()) != null) {
+                revText += line + "\n";
+                //System.out.println(line);
+            }
+            reader.close();
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return revText;
+    }
+
+    public String getMovieLength(String s) {
+        String a = "";
+        for (MovieClass i : movieList) {
+            if (i.getName().equals(s)) {
+                a = String.valueOf(i.getLength());
+                //System.out.println(a);
+                return a;
+            }
+        }
+        return "";
+    }
+
     public void searchReviews(Context context) {
         movieListSaved = this.movieListSaved;
         movieListSaved.clear(); //null after each iteration
@@ -46,7 +81,7 @@ public class FileSaver {
         File[] listOfFiles = folder.listFiles();
         for (File file : listOfFiles) {
             if (file.isFile()) {
-                if (file.toString().contains("REVIEW")) {
+                if (file.toString().contains("REVIEW_")) {
                     //System.out.println(file.getName());
                     String tempMovieName = file.getName();
                     movieListSaved.add(tempMovieName);
@@ -58,14 +93,14 @@ public class FileSaver {
         }*/
     }
 
-    public void writeReview(Float rating, String mName, String reviewText, Context context) {
+    public void writeReview(String yourName, Float rating, String mName, String reviewText, Context context) {
         //test print
         //System.out.println(reviewText + " "+rating.toString());
         try {
             OutputStreamWriter writer = new OutputStreamWriter(context.openFileOutput(
-                    "REVIEW-"+mName+".txt", Context.MODE_PRIVATE)); //mode_private
-            writer.write(mName + "\n"+"Your rating: "+rating.toString()+"\n\n"); //first lines
+                    "REVIEW_"+mName+".txt", Context.MODE_PRIVATE)); //mode_private
             writer.write(reviewText);
+            writer.write( "\n\n"+"Your rating: "+rating.toString()+"\n"+yourName); //last lines
             writer.close();
         } catch (FileNotFoundException e) {
             e.printStackTrace();

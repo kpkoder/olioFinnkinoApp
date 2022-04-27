@@ -10,10 +10,11 @@ import android.widget.EditText;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
+
 public class RateMovieActivity extends AppCompatActivity {
 
     TextView rateCount, showRating, lengthBar;
-    EditText review;
+    EditText review, yourNameText;
     Button button;
     RatingBar ratingBar;
     float rateValue; String temp;
@@ -40,6 +41,12 @@ public class RateMovieActivity extends AppCompatActivity {
         button = findViewById(R.id.saveButton);
         showRating = findViewById(R.id.showRating);
         lengthBar = findViewById(R.id.movieLength);
+        yourNameText = findViewById(R.id.yourNameText);
+
+        //fetching length in minutes
+        FileSaver fileSaver = FileSaver.getInstance();
+        String text2 = fileSaver.getMovieLength(text1)+"\nmin";
+        lengthBar.setText(text2);
 
         ratingBar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
             @Override
@@ -70,7 +77,8 @@ public class RateMovieActivity extends AppCompatActivity {
                 showRating.setText("Your rating: \n"+temp+ "\n"+review.getText());
                 String tempMName = textView.getText().toString();
                 //WRITING REVIEW WHEN PRESSING SAVE
-                fileSaver.writeReview(rateValue,tempMName, review.getText().toString(),RateMovieActivity.this);
+                String yourName = yourNameText.getText().toString();
+                fileSaver.writeReview(yourName,rateValue,tempMName, review.getText().toString(),RateMovieActivity.this);
                 //reset
                 review.setText("");
                 ratingBar.setRating(0);

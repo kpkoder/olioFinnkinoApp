@@ -14,8 +14,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:text="Rate a Movie"
-        android:textSize="40dp"
+        android:text="Review this movie"
+        android:textSize="34sp"
         android:textStyle="bold" />
 
     <TextView
@@ -31,11 +31,11 @@
         android:id="@+id/movieLength"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/rateText"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="322dp"
-        android:layout_marginTop="10dp"
-        android:textSize="30dp" />
+        android:layout_below="@+id/ratingBar"
+        android:layout_marginStart="35dp"
+        android:layout_marginTop="-57dp"
+        android:layout_toEndOf="@+id/ratingBar"
+        android:textSize="20sp" />
 
     <RatingBar
         android:id="@+id/ratingBar"
@@ -59,18 +59,32 @@
 
     <EditText
         android:id="@+id/review"
-        android:layout_width="wrap_content"
+        android:layout_width="366dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/rateCount"
+        android:layout_marginTop="56dp"
         android:hint="Write a review..."
+        android:textAppearance="?android:textAppearanceMedium" />
+
+    <EditText
+        android:id="@+id/yourNameText"
+        android:layout_width="202dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/saveButton"
+        android:layout_marginEnd="52dp"
+        android:layout_marginBottom="6dp"
+        android:layout_toStartOf="@+id/saveButton"
+        android:hint="Your name here"
         android:textAppearance="?android:textAppearanceMedium" />
 
     <Button
         android:id="@+id/saveButton"
-        android:layout_width="150dp"
-        android:layout_height="50dp"
-        android:layout_below="@+id/showRating"
-        android:layout_marginTop="20dp"
+        android:layout_width="114dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rateCount"
+        android:layout_alignEnd="@+id/ratingBar"
+        android:layout_marginTop="2dp"
+        android:layout_marginEnd="-129dp"
         android:backgroundTint="#A9BC93"
         android:text="Save"
         android:textSize="20dp" />

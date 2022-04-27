@@ -38,7 +38,8 @@ public class SavedMoviesList extends AppCompatActivity {
         List<String> tempList = new ArrayList<>();
         tempList.clear();
         for (String i : SavedList) {
-            String[] s = i.split("-");
+            i = i.substring(0, i.length()-4);
+            String[] s = i.split("_");
             String s1 = s[1];
             tempList.add(s1);
         }
@@ -60,7 +61,7 @@ public class SavedMoviesList extends AppCompatActivity {
     public void ratingInfo(int position) {
 
         Intent intent = new Intent(this, RatingDetails.class);
-        String movie = listOfMovies.get(position);
+        String movie = SavedList.get(position);
         intent.putExtra(EXTRA_TEXT, movie);
         startActivity(intent);
     }

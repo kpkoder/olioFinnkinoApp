@@ -39,7 +39,6 @@ public class MainActivity extends AppCompatActivity {
         //END
 
         //TEST AREA
-        //fileSaver.searchReviews(context);
         //
 
         searchButton = findViewById(R.id.searchButton);

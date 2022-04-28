@@ -46,12 +46,22 @@ public class SearchMovieActivity extends AppCompatActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                whatMovie(i);
+                //finding right position for whatMovie method
+                String tempName = adapterView.getItemAtPosition(i).toString();
+                int z = 0;
+                for (String x : adapMovieList) {
+                    if (x.equals(tempName)) {
+                        whatMovie(z);
+                    }
+                    z++;
+                }
+                //whatMovie(i);
             }
 
         });
     }
 
+    //Manages search bar
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
 

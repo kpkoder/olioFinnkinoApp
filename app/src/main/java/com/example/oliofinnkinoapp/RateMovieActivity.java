@@ -67,7 +67,7 @@ public class RateMovieActivity extends AppCompatActivity {
 
             }
         });
-
+        //Save movies button
         button.setOnClickListener(new View.OnClickListener() {
 
             FileSaver fileSaver = FileSaver.getInstance();

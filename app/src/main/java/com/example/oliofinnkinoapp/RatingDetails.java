@@ -40,10 +40,11 @@ public class RatingDetails extends AppCompatActivity {
     }
 
     public void setDelButton(View v) {
+        //deletes selected file
         FileSaver fileSaver = FileSaver.getInstance();
         String fileName = text1+".txt";
         fileSaver.fileDeleter(fileName, RatingDetails.this);
-        // reloading
+        // reloading saved movies page
         Intent intent = new Intent(this, SavedMoviesList.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP|Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);

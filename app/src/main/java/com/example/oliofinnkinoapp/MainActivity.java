@@ -55,6 +55,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }
+    //Setting up the two buttons on start
 
     public void searchMovies() {
         Intent intent = new Intent(this, SearchMovieActivity.class);

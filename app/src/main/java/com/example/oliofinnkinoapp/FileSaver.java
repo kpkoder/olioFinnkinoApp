@@ -13,8 +13,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-//Sorts the ArrayList of different movies
-//Can save and/or fetch saved data
+//Sorts ArrayList of different movies
+//Can save and/or fetch saved data from local files
 
 public class FileSaver {
 
@@ -42,8 +42,8 @@ public class FileSaver {
         file.delete();
     }
 
+    //Fetches text from saved movie reviews to display in app
     public String reviewReader(String fileName, Context context) {
-
         String revText = "";
         InputStream reader = null;
         try {
@@ -65,6 +65,7 @@ public class FileSaver {
         return revText;
     }
 
+    //Matches movie name to find correct length to display in app
     public String getMovieLength(String s) {
         String a = "";
         for (MovieClass i : movieList) {
@@ -76,9 +77,10 @@ public class FileSaver {
         return "";
     }
 
+    //Finds reviews from local files
     public void searchReviews(Context context) {
         movieListSaved = this.movieListSaved;
-        movieListSaved.clear(); //null after each iteration
+        movieListSaved.clear(); //clear after each iteration
         File folder = new File(context.getFilesDir().getPath());
         File[] listOfFiles = folder.listFiles();
         for (File file : listOfFiles) {
@@ -91,6 +93,7 @@ public class FileSaver {
         }
     }
 
+    //Collects necessary data for writing and saving reviews
     public void writeReview(String lengthText,String yourName, Float rating, String mName, String reviewText, Context context) {
         try {
             OutputStreamWriter writer = new OutputStreamWriter(context.openFileOutput(
@@ -109,6 +112,8 @@ public class FileSaver {
 
     }
 
+    //Reads FKmovies.txt and rewrites it
+    //Enables the list of movies to grow daily
     public void readAndWriteMovies(Context context) {
         InputStream reader = null;
         List<String> movieNames = new ArrayList<String>(); //new list for sorting
@@ -148,6 +153,8 @@ public class FileSaver {
         }
     }
 
+    //Ran at start. Adds every current movie from https://www.finnkino.fi/xml/Schedule/
+    // to be sorted later
     public void Write(Context context) {
         //Getting movielist from WebReader
         WebReader webReader = WebReader.getInstance();

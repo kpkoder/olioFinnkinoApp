@@ -1,7 +1,6 @@
 package com.example.oliofinnkinoapp;
 
-//import java.text.SimpleDateFormat;
-//import java.util.Date;
+//MovieClass objects containing information about saved movies
 
 public class MovieClass {
 

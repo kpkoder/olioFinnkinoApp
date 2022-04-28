@@ -11,9 +11,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class SearchMovieActivity extends AppCompatActivity {
@@ -21,9 +19,6 @@ public class SearchMovieActivity extends AppCompatActivity {
     public static final String EXTRA_TEXT = "com.example.oliofinnkinoapp.EXTRA_TEXT";
 
     ListView listView;
-    /*String[] AllMovies = {"movie1", "movie2", "movie3"};
-
-    List<String> listOfMovies = Arrays.asList(AllMovies);*/
     List<String> tempList = new ArrayList<String>();
 
     ArrayAdapter<String> arrayAdapter;
@@ -40,7 +35,6 @@ public class SearchMovieActivity extends AppCompatActivity {
         for (String i : tempList) {
             String[] s = i.split(";");
             String s1 = s[0];
-            //System.out.println(s1);
             tempList.set(tempList.indexOf(i),s1);
         }
         String[] adapMovieList = tempList.stream().toArray(String[]::new);
@@ -74,9 +68,7 @@ public class SearchMovieActivity extends AppCompatActivity {
 
             @Override
             public boolean onQueryTextChange(String newText) {
-
                 arrayAdapter.getFilter().filter(newText);
-
                 return false;
             }
         });
@@ -85,13 +77,10 @@ public class SearchMovieActivity extends AppCompatActivity {
     }
 
     public void whatMovie (int position) {
-        //System.out.println(position);
         Intent intent = new Intent(this, RateMovieActivity.class);
-
         String thisMovie = tempList.get(position);
         intent.putExtra(EXTRA_TEXT, thisMovie);
         startActivity(intent);
-
     }
 
 }

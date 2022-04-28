@@ -9,14 +9,12 @@ public class MovieClass {
         private Float rating = 0F;
         private int length = 0; //length in minutes
         private String airTime = ""; //when the movie is airing (maybe useless)
-        private boolean favorite = false;
 
         public MovieClass(String n, String aT, Float r, int a) {
             name = n;
             airTime = aT;
             rating = r;
             length = a;
-
         }
 
         public String getName() {

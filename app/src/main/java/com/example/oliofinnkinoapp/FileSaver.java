@@ -1,13 +1,10 @@
 package com.example.oliofinnkinoapp;
 
 
-
-
 import android.content.Context;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FilenameFilter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -17,7 +14,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 //Sorts the ArrayList of different movies
-//Can save and or fetch saved data
+//Can save and/or fetch saved data
 
 public class FileSaver {
 
@@ -73,7 +70,6 @@ public class FileSaver {
         for (MovieClass i : movieList) {
             if (i.getName().equals(s)) {
                 a = String.valueOf(i.getLength());
-                //System.out.println(a);
                 return a;
             }
         }
@@ -88,20 +84,14 @@ public class FileSaver {
         for (File file : listOfFiles) {
             if (file.isFile()) {
                 if (file.toString().contains("REVIEW_")) {
-                    //System.out.println(file.getName());
                     String tempMovieName = file.getName();
                     movieListSaved.add(tempMovieName);
                 }
             }
         }
-        /*for (String a : movieListSaved) {
-            System.out.println(a);
-        }*/
     }
 
     public void writeReview(String lengthText,String yourName, Float rating, String mName, String reviewText, Context context) {
-        //test print
-        //System.out.println(reviewText + " "+rating.toString());
         try {
             OutputStreamWriter writer = new OutputStreamWriter(context.openFileOutput(
                     "REVIEW_"+mName+".txt", Context.MODE_PRIVATE)); //mode_private
@@ -131,7 +121,6 @@ public class FileSaver {
 
             while ((line=br.readLine()) != null) {
                 movieNames.add(line); //adding movie to new list
-                //System.out.println(line);
             }
             reader.close();
 
@@ -160,10 +149,8 @@ public class FileSaver {
     }
 
     public void Write(Context context) {
-
         //Getting movielist from WebReader
         WebReader webReader = WebReader.getInstance();
-        //getting the list
         this.movieList = webReader.returnMovies();
         try {
             OutputStreamWriter writer = new OutputStreamWriter(context.openFileOutput(
@@ -172,7 +159,6 @@ public class FileSaver {
                 String tempString = i.getName(); //get movie name
                 String tempTime = String.valueOf(i.getLength()); //get movie length in minutes
                 writer.append(tempString + ";"+tempTime+"\n");
-
             }
                 writer.close();
         } catch (FileNotFoundException e) {
@@ -180,7 +166,6 @@ public class FileSaver {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
     }
 
 }

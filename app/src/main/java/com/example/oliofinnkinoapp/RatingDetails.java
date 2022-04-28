@@ -8,9 +8,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class RatingDetails extends AppCompatActivity {
 
     TextView movieName, ratingText;
@@ -22,7 +19,7 @@ public class RatingDetails extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rating_details);
 
-        //movie's name
+        //movie name
         Intent intent = getIntent();
         text1 = intent.getStringExtra(SavedMoviesList.EXTRA_TEXT);
 
@@ -46,7 +43,6 @@ public class RatingDetails extends AppCompatActivity {
         FileSaver fileSaver = FileSaver.getInstance();
         String fileName = text1+".txt";
         fileSaver.fileDeleter(fileName, RatingDetails.this);
-        //finish();
         // reloading
         Intent intent = new Intent(this, SavedMoviesList.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP|Intent.FLAG_ACTIVITY_CLEAR_TASK);

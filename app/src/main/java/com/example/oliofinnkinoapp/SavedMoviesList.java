@@ -8,9 +8,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class SavedMoviesList extends AppCompatActivity {
@@ -18,9 +16,6 @@ public class SavedMoviesList extends AppCompatActivity {
     public static final String EXTRA_TEXT = "com.example.oliofinnkinoapp.EXTRA_TEXT";
 
     ListView listView;
-    String[] AllMovies = {"test1", "test2", "test3"};
-
-    List<String> listOfMovies = Arrays.asList(AllMovies);
     List<String> SavedList = new ArrayList<String>();
 
     ArrayAdapter<String> arrayAdapter;
@@ -59,7 +54,6 @@ public class SavedMoviesList extends AppCompatActivity {
     }
 
     public void ratingInfo(int position) {
-
         Intent intent = new Intent(this, RatingDetails.class);
         String movie = SavedList.get(position);
         intent.putExtra(EXTRA_TEXT, movie);

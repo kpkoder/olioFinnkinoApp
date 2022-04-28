@@ -19,7 +19,7 @@ public class RateMovieActivity extends AppCompatActivity {
     RatingBar ratingBar;
     float rateValue; String temp;
 
-    /*singleton principle if needed
+    /*singleton if needed
     private static RateMovieActivity rateMovieActivity = new RateMovieActivity();
     public static RateMovieActivity getInstance() { return rateMovieActivity; }
      */

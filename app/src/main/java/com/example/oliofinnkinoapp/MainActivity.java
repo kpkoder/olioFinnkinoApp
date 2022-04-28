@@ -2,22 +2,21 @@ package com.example.oliofinnkinoapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.view.View;
 import android.widget.Button;
 
-import java.util.List;
+/*Group: gamers
+Finnkino Movie App
 
-//Group: gamers
-//Finnkino Movie App
+Simple app for reviewing and rating movies provided by Finnkino
+ */
 
 public class MainActivity extends AppCompatActivity {
 
     private Context context;
-    private List<MovieClass> movieList;
     Button searchButton, myMoviesButton;
 
     @Override
@@ -38,9 +37,6 @@ public class MainActivity extends AppCompatActivity {
         fileSaver.readAndWriteMovies(context); //for reading and re-writing said file ^
         //END
 
-        //TEST AREA
-        //
-
         searchButton = findViewById(R.id.searchButton);
         myMoviesButton = findViewById(R.id.myMoviesButton);
 
@@ -60,15 +56,12 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-
     public void searchMovies() {
-
         Intent intent = new Intent(this, SearchMovieActivity.class);
         startActivity(intent);
     }
 
     public void showSavedMovies() {
-
         Intent intent = new Intent(this, SavedMoviesList.class);
         startActivity(intent);
     }

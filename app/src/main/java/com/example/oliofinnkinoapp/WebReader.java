@@ -22,11 +22,9 @@ public class WebReader {
     private static WebReader webReader = new WebReader();
     public static WebReader getInstance() { return webReader; }
 
-
     public ArrayList<MovieClass> returnMovies() {
         return Movies;
     }
-
 
     // Method for reading Finnkino movie data and creating MovieClass objects
     public void readXML() {
@@ -58,20 +56,13 @@ public class WebReader {
                     String TempLengthInMinutes = element.getElementsByTagName("LengthInMinutes").item(0).getTextContent();
                     int LengthInMinutes = Integer.parseInt(TempLengthInMinutes);
 
-                    //Might need these
-                    //String tempName = element.getElementsByTagName("Theatre").item(0).getTextContent();
-
                     //PRINT FOR CHECK
                     //System.out.println(tempName);
 
-                    //Making new Movies
-                    //MovieClass(String name, Float rating, String airTime, int LengthInMinutes) {
+                    //Making new MovieClass objects
                     MovieClass kino = new MovieClass(tempName, aika, 0F, LengthInMinutes);
                     Movies.add(kino);
-                    //System.out.println(kino.getName());
-
                 }
-
             }
 
         } catch (IOException e) {
